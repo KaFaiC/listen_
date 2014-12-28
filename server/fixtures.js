@@ -1,18 +1,21 @@
 if( Songs.find().count() === 0) {
 
 	Songs.insert({
-		title: 'RubyConf 2014 - Deoptimizing Ruby',
-		link: 'https://www.youtube.com/watch?v=z-YVygbDHLE'
+		youtubeVideoId: 'ajCYQL8ouqw',
+		duration: 7*60,
+		title: 'Beatles - Let lt Be'
 	});
 
 	Songs.insert({
-		title: 'MongoDB World 2014 Highlights ',
-		link: 'https://www.youtube.com/watch?v=YYl250CwTrw'
+		youtubeVideoId: 'S09F5MejfBE',
+		duration: 3*60 + 55,
+		title: 'The Beatles - Yesterday '
 	});
 
 	Songs.insert({
-		title: 'IN THE LAB - Stationary Dribbling pt. 2 ',
-		link: 'https://www.youtube.com/watch?v=DSxCLrTjJZY'
+		youtubeVideoId: 'DVg2EJvvlF8',
+		duration: 2*60 +33,
+		title: 'John Lennon - Imagine'
 	});
 
 }

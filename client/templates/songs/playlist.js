@@ -17,14 +17,13 @@ Template.playlist.events({
 		var youtubeVideoId = $(e.target).find('[name=videoId]').val();
 		
 		var errors = validateSongId(youtubeVideoId);
-		console.log(errors);
 		if(errors.youtubeVIdeoId)
 			return Session.set('songSubmitErrors', errors);
 		
 		Meteor.call('songInsert', youtubeVideoId, function(err, result) {
 			if (err)
 				return throwError(err.reason);
-			
+			console.log(result);	
 			if (result.songExists)
 				return throwError('This song has already been added');
 	
