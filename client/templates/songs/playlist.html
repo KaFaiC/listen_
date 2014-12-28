@@ -1,6 +1,19 @@
 <template name="playlist">
 	<div class="posts">
-		<div id="youtube-player"></div>
+		<div class="search-box">
+			<form class="search-form">
+				<input class="form-control" type="text" placeholder="Song name, singer name"/>
+				<button class="btn btn-link search-btn"><i class="glyphicon glyphicon-search"></i></button>
+			</form>
+		</div>
+		<div id="youtube-player-wrapper"></div>
+		<div class="create-song-wrapper">
+			<form class="create-song-form">
+				<input class="form-control" name="videoId" type="text" placeholder="youtube video id"/>
+				<button class="btn btn-link create-song-btn"><i class="glyphicon glyphicon-plus"></i></button>
+			</form>
+		</div>
+	
 		{{#each songs}}
 			{{> songItem}}
 		{{/each}}

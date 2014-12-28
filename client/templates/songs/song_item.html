@@ -1,8 +1,17 @@
 <template name="songItem">
-	<div class="song">
-		<div class="song-content">
+	<div class="song row">
+		<div class="song-thumbnail col-sm-3">
+		</div>
+		<div class="song-content col-sm-6">
 			<div class="song-title"><a href="{{url}}">{{title}}</a></div>
 		</div>
-		<a href="{{pathFor 'songPage'}}" class="song-detail btn btn-clear">Detail</a>
+		<div class="col-sm-3 song-action-wrapper">
+			<div class="vote">
+				<div class="increment	up"></div>
+				<div class="increment down"></div>
+				<div class="count">5</div>
+			</div>
+		</div>
+		<!--	<a href="{{pathFor 'songPage'}}" class="song-detail btn btn-clear">Detail</a> -->
 	</div>
 </template>
