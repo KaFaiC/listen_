@@ -85,6 +85,18 @@
 	background: none;
 }
 
+.song {
+	position: relative;
+	border-bottom: 1px solid rgba(200, 200, 200, 0.4);
+	margin: 0.5em;
+}
+
+.song-content {
+	height: 3em;
+}
+
+
+
 @media(min-width: 768px) {
 	#listen-in-wrapper {
 		padding-left: 250px;
