@@ -224,6 +224,40 @@
 	background-color: #ffffff;
 }
 
+@keyframes fadeOut {
+	0% {opacity: 0;}
+	10% {opacity: 1;}
+	90% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@-webkit-keyframes fadeOut {
+	0% {opacity: 0;}
+	10% {opacity: 1;}
+	90% {opacity: 0.1;}
+	100% {opacity: 0;}
+}
+
+.errors {
+	position: fixed;
+	right: 0;
+	z-index: 10000;
+	padding: 0.1rem;
+	pointer-events: none;
+}
+
+.alert {
+	animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	-webkit-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	-moz-animation: fadeOut 2700ms ease-in 0s 1 forwards;
+	width: 25rem;
+	float: right;
+	clear: both;
+	margin-bottom: 0.5em;
+	point-events: auto;
+}
+
+
 @media(min-width: 768px) {
 	#listen-in-wrapper {
 		padding-left: 250px;
