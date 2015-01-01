@@ -18,5 +18,16 @@ Template.songItem.helpers({
 		displayedDuration = hours + ':' + minutes + ':' + seconds;
 		return displayedDuration;	
 			
+	},
+});
+
+Template.songItem.events({
+	'click .increment.up': function(e) {
+		e.preventDefault();
+		Meteor.call('upvote', this._id);
+	},
+	'click .increment.down': function(e) {
+		e.preventDefault();
+		Meteor.call('downvote', this._id);
 	}
 });
