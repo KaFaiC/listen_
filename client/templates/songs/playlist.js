@@ -71,9 +71,8 @@ Tracker.autorun(function() {
 		console.log('in interval');
 		var playerDiv = document.createElement('div'),
 			//	playlist  = Template.playlist.getPlaylist(),
-				playerWrapper = document.getElementById('youtube-player-wrapper');
-		playerDiv.id  = 'player-div';
-		
+		playerWrapper = document.getElementById('youtube-player-wrapper');
+		playerDiv.id  = 'player-div';		
 		playerWrapper.innerHTML = '';
 		playerWrapper.appendChild(playerDiv);
 		
