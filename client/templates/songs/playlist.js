@@ -1,6 +1,9 @@
 Template.playlist.helpers({
 	songs: function() {
 		return this.songs
+	},
+	loaded: function() {
+		return Session.equals('youtubeApiLoaded', true);
 	}
 });
 
@@ -14,13 +17,14 @@ Template.playlist.events({
 Template.playlist.events({
 	'submit .create-song-form': function(e) {
 		e.preventDefault();
+		Session.set('youtubeApiLoaded', false);	
 		var youtubeVideoId = $(e.target).find('[name=videoId]').val();
 		
 		var errors = validateSongId(youtubeVideoId);
 		if(errors.youtubeVIdeoId)
 			return Session.set('songSubmitErrors', errors);
-		
 		Meteor.call('songInsert', youtubeVideoId, function(err, result) {
+			Session.set('youtubeApiLoaded', true);
 			if (err)
 				return throwError(err.reason);
 			console.log(result);	
@@ -34,6 +38,7 @@ Template.playlist.events({
 Meteor.startup(function() {
 	Session.set('YTApiReady', false);
 	Session.set('channelRendered', false);
+	Session.set('youtubeApiLoaded', true);
 });
 
 onYoutubeIframeAPIReady = function() {

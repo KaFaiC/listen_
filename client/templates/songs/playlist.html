@@ -13,7 +13,9 @@
 				<button class="btn btn-link create-song-btn"><i class="glyphicon glyphicon-plus"></i></button>
 			</form>
 		</div>
-	
+		{{#unless loaded}}
+			{{> loading}}
+		{{/unless}}
 		{{#each songs}}
 			{{> songItem}}
 		{{/each}}
