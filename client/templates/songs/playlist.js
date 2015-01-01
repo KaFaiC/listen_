@@ -63,7 +63,7 @@ Tracker.autorun(function() {
 	if (Session.equals('YTApiReady', false) || Session.equals('playlistRendered', false)) {
 		return;
 	}
-
+	var currentPlayingVideo;
 	var interval = Meteor.setInterval(function() {
 		if(!document.getElementById('youtube-player-wrapper')) {
 			return;
@@ -78,14 +78,36 @@ Tracker.autorun(function() {
 		playerWrapper.appendChild(playerDiv);
 		
 		player = null;
+		currentPlayingVideo = getHighestVoteSong();
 		player = new YT.Player('player-div', {
-			videoId: 'TT_fDnnl6Sk',
-			 events: {
+			currentPlayingVideoId: currentPlayingVideo._id,
+			videoId: currentPlayingVideo.youtubeVideoId,
+			events: {
 				onReady: function(event) {
 					event.target.playVideo();
+				},
+				onError: function(event) {
+					throwError('We are sorry for the youtube error. Please try it later');
+				},
+				onStateChange: function(event) {
+					if (event.data == YT.PlayerState.ENDED) {
+						console.log(player);
+						Meteor.call('clearVote', currentPlayingVideo._id, function(err, result) {
+							if (err)
+								throwError(error.reason);
+							currentPlayingVideo = getHighestVoteSong();
+							player.videoId = currentPlayingVideo.youtubeVideoId;
+							player.loadVideoById(player.videoId);
+						});
+					};
+					return false;
 				}
-			 }
+		  }
 		});
 		Meteor.clearInterval(interval);	
 	}, 100);
 });
+
+function getHighestVoteSong() {
+	return Songs.findOne({},{sort: {votes: -1}});
+}
