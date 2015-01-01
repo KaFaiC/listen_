@@ -105,7 +105,7 @@ Tracker.autorun(function() {
 		  }
 		});
 		Meteor.clearInterval(interval);	
-	}, 100);
+	}, 400);
 });
 
 function getHighestVoteSong() {

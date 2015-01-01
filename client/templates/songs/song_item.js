@@ -24,10 +24,16 @@ Template.songItem.helpers({
 Template.songItem.events({
 	'click .increment.up': function(e) {
 		e.preventDefault();
-		Meteor.call('upvote', this._id);
+		Meteor.call('upvote', this._id, function(err, result) {
+			if (err)
+				throwError(err.reason);
+		});
 	},
 	'click .increment.down': function(e) {
 		e.preventDefault();
-		Meteor.call('downvote', this._id);
+		Meteor.call('downvote', this._id, function(err, result) {
+			if (err)
+				throwError(err.reason);
+		});
 	}
 });
